@@ -1,0 +1,8 @@
+DwmRegisterThumbnail
+DwmUnregisterThumbnail
+DwmQueryThumbnailSourceSize
+DwmUpdateThumbnailProperties
+DwmIsCompositionEnabled
+DwmExtendFrameIntoClientArea
+GetWindowRect
+SetForegroundWindow

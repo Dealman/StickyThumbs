@@ -1,0 +1,73 @@
+﻿<mah:MetroWindow x:Class="StickyThumbs.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:uc="clr-namespace:StickyThumbs.UserControls"
+        xmlns:local="clr-namespace:StickyThumbs"
+        mc:Ignorable="d"
+        Title="StickyThumbs" TitleCharacterCasing="Normal" Height="450" Width="800" WindowStartupLocation="CenterScreen" SaveWindowPosition="True">
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <Button x:Name="GitHubButton" Content="GitHub" Click="WindowButton_Click"/>
+            <Button x:Name="AboutButton" Content="About" Click="WindowButton_Click"/>
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
+    <Grid Background="{DynamicResource MahApps.Brushes.Menu.Background}">
+        <TabControl>
+            <TabItem Header="Processes">
+                <DockPanel>
+                    <Button x:Name="RefreshButton" Content="Refresh" mah:ControlsHelper.ContentCharacterCasing="Normal" DockPanel.Dock="Bottom" Margin="5" Click="RefreshButton_Click"/>
+                    <DataGrid x:Name="ProcessDataGrid" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="FullRow">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="32" CanUserResize="False" CanUserReorder="False">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding ProcessImage}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="Process Name" Binding="{Binding ToolTip}"/>
+                            <DataGridTextColumn Header="Process ID" Binding="{Binding Process.Id}"/>
+                            <DataGridTextColumn Header="Window Handle" Binding="{Binding Process.MainWindowHandle}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Settings">
+                <StackPanel>
+                    <GroupBox Header="Blacklist" mah:ControlsHelper.ContentCharacterCasing="Normal" Margin="5" Padding="1">
+                        <DataGrid x:Name="BlacklistDataGrid" MinHeight="120">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Process" Binding="{Binding}" Width="*" IsReadOnly="True"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+                    <GroupBox Header="Application Settings" mah:ControlsHelper.ContentCharacterCasing="Normal" Margin="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Label Content="Dark Mode" Grid.Column="0" Grid.Row="0"/>
+                            <mah:ToggleSwitch x:Name="DarkModeSwitch" DockPanel.Dock="Left" Grid.Column="0" Grid.Row="1" IsOn="True"/>
+                            <Label Content="Theme" Grid.Column="1" Grid.Row="0"/>
+                            <ComboBox x:Name="ThemesComboBox" DockPanel.Dock="Right" Grid.Column="1" Grid.Row="1">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <uc:AccentMenuItem ThemeProperty="{Binding}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </Grid>
+                    </GroupBox>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</mah:MetroWindow>

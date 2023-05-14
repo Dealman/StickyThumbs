@@ -1,0 +1,11 @@
+﻿<UserControl x:Name="RootElement" x:Class="StickyThumbs.UserControls.ProcessControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StickyThumbs.UserControls"
+             mc:Ignorable="d">
+    <Grid Background="#01000000">
+        <Image x:Name="ProcessIcon" Width="32" Height="32" MaxWidth="32" MaxHeight="32"/>
+    </Grid>
+</UserControl>
