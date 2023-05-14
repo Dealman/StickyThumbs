@@ -9,7 +9,7 @@ namespace StickyThumbs
 {
     public static class Blacklist
     {
-        static HashSet<string> Processes { get; set; } = new HashSet<string>() { "SystemSettings", "ApplicationFrameHost" };
+        static HashSet<string> Processes { get; set; } = new HashSet<string>() { "SystemSettings", "ApplicationFrameHost", "StickyThumbs" };
 
         static string FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "StickyThumbs");
         static string FilePath = Path.Combine(FolderPath, "Blacklist.json");

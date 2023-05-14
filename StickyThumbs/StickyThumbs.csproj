@@ -7,6 +7,8 @@
     <UseWPF>true</UseWPF>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>StickyThumbs.ico</ApplicationIcon>
+    <Title>StickyThumbs</Title>
+    <Copyright>MIT License</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
