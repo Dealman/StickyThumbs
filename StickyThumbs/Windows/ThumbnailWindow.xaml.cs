@@ -419,10 +419,17 @@ namespace StickyThumbs.Windows
             if (MonitoredProcess is null)
                 return "N/A";
 
-            if (!String.IsNullOrWhiteSpace(MonitoredProcess.MainModule.FileVersionInfo.FileDescription))
-                return MonitoredProcess.MainModule.FileVersionInfo.FileDescription;
-            else
+            try
+            {
+                if (!String.IsNullOrWhiteSpace(MonitoredProcess.MainModule.FileVersionInfo.FileDescription))
+                    return MonitoredProcess.MainModule.FileVersionInfo.FileDescription;
+            }
+            catch
+            {
                 return MonitoredProcess.ProcessName;
+            }
+
+            return "N/A";
         }
         #endregion
 

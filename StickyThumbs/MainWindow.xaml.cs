@@ -119,14 +119,21 @@ namespace StickyThumbs
                 if (ThumbnailDictionary.ContainsKey(selectedProcess.Process.ProcessName))
                     return;
 
-                Windows.ThumbnailWindow thumbnailWindow = new Windows.ThumbnailWindow(selectedProcess.Process);
-                var appTheme = ThemeManager.Current.DetectTheme(this)?.Name ?? "Dark.Blue";
-                ThemeManager.Current.ChangeTheme(thumbnailWindow, appTheme);
-                thumbnailWindow.Closing += ThumbnailWindow_Closing;
-                ThumbnailDictionary.Add(selectedProcess.Process.ProcessName, thumbnailWindow);
-                thumbnailWindow.Show();
-                selectedProcess.Process.EnableRaisingEvents = true;
-                selectedProcess.Process.Exited += Process_Exited;
+                try
+                {
+                    Windows.ThumbnailWindow thumbnailWindow = new Windows.ThumbnailWindow(selectedProcess.Process);
+                    var appTheme = ThemeManager.Current.DetectTheme(this)?.Name ?? "Dark.Blue";
+                    ThemeManager.Current.ChangeTheme(thumbnailWindow, appTheme);
+                    thumbnailWindow.Closing += ThumbnailWindow_Closing;
+                    ThumbnailDictionary.Add(selectedProcess.Process.ProcessName, thumbnailWindow);
+                    thumbnailWindow.Show();
+                    selectedProcess.Process.EnableRaisingEvents = true;
+                    selectedProcess.Process.Exited += Process_Exited;
+                }
+                catch
+                {
+                    // TODO: Error/Warning message, likely System.ComponentModel.Win32Exception
+                }
             }
         }
         void UpdateBlacklistDataGrid()
