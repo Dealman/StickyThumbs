@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="StickyThumbs.exe" version="1.0.3.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="StickyThumbs.exe" version="1.0.4.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="StickyThumbs.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -117,13 +117,13 @@
       <dsig:DigestValue>FfW/9KQ9Bhfi+pGnocRbREaaTQi307j/PFzgJBcmUZk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="StickyThumbs.dll" size="162304">
+  <file name="StickyThumbs.dll" size="162816">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>0SvwqMvfPXrA9le6YbWP+u18CWMOED6Yh3lA8ErHvf4=</dsig:DigestValue>
+      <dsig:DigestValue>mvsTcocoNWV0bh+sf5+QAZ5tjbx3d0qYocQnk396ZzE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="StickyThumbs.dll.config" size="825">
@@ -141,7 +141,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>nCqdxfD+yVMwXWkIqoDgo9rvWbh0t504HM4FWsSDXbU=</dsig:DigestValue>
+      <dsig:DigestValue>rYik9xP4NhwT/t6T2wQiyPd3Z2zhBGWcT/NMeYEb4aI=</dsig:DigestValue>
     </hash>
   </file>
   <file name="StickyThumbs.ico" size="104273">
