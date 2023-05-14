@@ -10,7 +10,7 @@
         "dependencies": {
           "MahApps.Metro": "2.4.9",
           "Microsoft.Windows.CsWin32": "0.2.229-beta",
-          "System.Drawing.Common": "8.0.0-preview.2.23128.3"
+          "System.Drawing.Common": "7.0.0"
         },
         "runtime": {
           "StickyThumbs.dll": {}
@@ -44,22 +44,7 @@
           }
         }
       },
-      "Microsoft.Win32.SystemEvents/8.0.0-preview.2.23128.3": {
-        "runtime": {
-          "lib/net7.0/Microsoft.Win32.SystemEvents.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.23.12803"
-          }
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/net7.0/Microsoft.Win32.SystemEvents.dll": {
-            "rid": "win",
-            "assetType": "runtime",
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.23.12803"
-          }
-        }
-      },
+      "Microsoft.Win32.SystemEvents/7.0.0": {},
       "Microsoft.Windows.CsWin32/0.2.229-beta": {
         "dependencies": {
           "Microsoft.Windows.SDK.Win32Docs": "0.1.12-alpha",
@@ -78,15 +63,9 @@
           }
         }
       },
-      "System.Drawing.Common/8.0.0-preview.2.23128.3": {
+      "System.Drawing.Common/7.0.0": {
         "dependencies": {
-          "Microsoft.Win32.SystemEvents": "8.0.0-preview.2.23128.3"
-        },
-        "runtime": {
-          "lib/net7.0/System.Drawing.Common.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.23.12803"
-          }
+          "Microsoft.Win32.SystemEvents": "7.0.0"
         }
       },
       "System.Memory/4.5.5": {},
@@ -114,12 +93,12 @@
       "path": "mahapps.metro/2.4.9",
       "hashPath": "mahapps.metro.2.4.9.nupkg.sha512"
     },
-    "Microsoft.Win32.SystemEvents/8.0.0-preview.2.23128.3": {
+    "Microsoft.Win32.SystemEvents/7.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-2ugSY6UuqJfYhvVUaf4ueuUiMjIyN9dU03wpbKfRDsn13XvZ91yOlw7NLhYvB1Xc8gCAZpND20Tgbe3uBVytKA==",
-      "path": "microsoft.win32.systemevents/8.0.0-preview.2.23128.3",
-      "hashPath": "microsoft.win32.systemevents.8.0.0-preview.2.23128.3.nupkg.sha512"
+      "sha512": "sha512-2nXPrhdAyAzir0gLl8Yy8S5Mnm/uBSQQA7jEsILOS1MTyS7DbmV1NgViMtvV1sfCD1ebITpNwb1NIinKeJgUVQ==",
+      "path": "microsoft.win32.systemevents/7.0.0",
+      "hashPath": "microsoft.win32.systemevents.7.0.0.nupkg.sha512"
     },
     "Microsoft.Windows.CsWin32/0.2.229-beta": {
       "type": "package",
@@ -149,12 +128,12 @@
       "path": "microsoft.xaml.behaviors.wpf/1.1.19",
       "hashPath": "microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512"
     },
-    "System.Drawing.Common/8.0.0-preview.2.23128.3": {
+    "System.Drawing.Common/7.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-kTEwdz83KrBKPVWEcrF4OGqLeJ6aK7jsPWBp/hX7ngT8BCvWLKAaBd5HZ4cmux0t7k5Lka/B/DqmKC8jc8TrOQ==",
-      "path": "system.drawing.common/8.0.0-preview.2.23128.3",
-      "hashPath": "system.drawing.common.8.0.0-preview.2.23128.3.nupkg.sha512"
+      "sha512": "sha512-KIX+oBU38pxkKPxvLcLfIkOV5Ien8ReN78wro7OF5/erwcmortzeFx+iBswlh2Vz6gVne0khocQudGwaO1Ey6A==",
+      "path": "system.drawing.common/7.0.0",
+      "hashPath": "system.drawing.common.7.0.0.nupkg.sha512"
     },
     "System.Memory/4.5.5": {
       "type": "package",
