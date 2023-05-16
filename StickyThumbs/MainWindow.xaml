@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:properties="clr-namespace:StickyThumbs.Properties"
         xmlns:uc="clr-namespace:StickyThumbs.UserControls"
         xmlns:local="clr-namespace:StickyThumbs"
         mc:Ignorable="d"
@@ -53,9 +54,10 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Label Content="Dark Mode" Grid.Column="0" Grid.Row="0"/>
-                            <mah:ToggleSwitch x:Name="DarkModeSwitch" DockPanel.Dock="Left" Grid.Column="0" Grid.Row="1" IsOn="True"/>
+                            <mah:ToggleSwitch x:Name="DarkModeSwitch" DockPanel.Dock="Left" Grid.Column="0" Grid.Row="1" IsOn="True" Margin="5,0,0,0"/>
                             <Label Content="Theme" Grid.Column="1" Grid.Row="0"/>
                             <ComboBox x:Name="ThemesComboBox" DockPanel.Dock="Right" Grid.Column="1" Grid.Row="1">
                                 <ComboBox.ItemTemplate>
@@ -64,6 +66,7 @@
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
+                            <CheckBox x:Name="CloseThumbnailsCheckBox" Content="Close All Thumbnails On Exit" Grid.Row="2" Margin="5,0,0,0" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=CloseThumbnails, FallbackValue=True}" Click="CheckBox_Click"/>
                         </Grid>
                     </GroupBox>
                 </StackPanel>

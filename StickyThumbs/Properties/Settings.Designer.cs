@@ -34,5 +34,17 @@ namespace StickyThumbs.Properties {
                 this["AppTheme"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CloseThumbnails {
+            get {
+                return ((bool)(this["CloseThumbnails"]));
+            }
+            set {
+                this["CloseThumbnails"] = value;
+            }
+        }
     }
 }

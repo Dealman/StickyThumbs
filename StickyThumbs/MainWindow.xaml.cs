@@ -23,10 +23,23 @@ namespace StickyThumbs
             InitializeComponent();
 
             Loaded += MainWindow_Loaded;
+            Closing += MainWindow_Closing;
             ThemesComboBox.SelectionChanged += ThemesComboBox_SelectionChanged;
             DarkModeSwitch.Toggled += DarkModeSwitch_Toggled;
             ProcessDataGrid.MouseDoubleClick += ProcessDataGrid_MouseDoubleClick;
             BlacklistDataGrid.MouseDoubleClick += BlacklistDataGrid_MouseDoubleClick;
+        }
+
+        private void MainWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (ThumbnailDictionary.Count > 0 && CloseThumbnailsCheckBox.IsChecked.GetValueOrDefault())
+            {
+                foreach(var thumbnail in ThumbnailDictionary.Values)
+                {
+                    if (thumbnail is not null)
+                        thumbnail.Close();
+                }
+            }
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -54,6 +67,9 @@ namespace StickyThumbs
                 case "AppTheme":
                     var appTheme = ThemeManager.Current.DetectTheme(this)?.Name ?? "Dark.Blue";
                     Properties.Settings.Default.AppTheme = appTheme;
+                    break;
+                case "CloseThumbnails":
+                    Properties.Settings.Default.CloseThumbnails = CloseThumbnailsCheckBox.IsChecked.GetValueOrDefault();
                     break;
             }
 
@@ -199,6 +215,14 @@ namespace StickyThumbs
             if (sender == AboutButton)
             {
                 await this.ShowMessageAsync($"StickyThumbs V{Assembly.GetExecutingAssembly().GetName().Version.ToString()}", "Creates resizeable, zoomable 'sticky' thumbnails which remain on top of other windows.\n\nIcons created by https://www.flaticon.com/authors/freepik");
+            }
+        }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender == CloseThumbnailsCheckBox && CloseThumbnailsCheckBox.IsLoaded)
+            {
+                SaveSetting("CloseThumbnails");
             }
         }
     }
