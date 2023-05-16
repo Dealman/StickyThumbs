@@ -6,3 +6,5 @@ DwmIsCompositionEnabled
 DwmExtendFrameIntoClientArea
 GetWindowRect
 SetForegroundWindow
+GetWindowLong
+SetWindowLong

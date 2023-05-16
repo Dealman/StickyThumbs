@@ -165,6 +165,14 @@ namespace StickyThumbs.Windows
         private void ThumbnailWindow_Loaded(object sender, RoutedEventArgs e)
         {
             SetupThumbnail();
+
+            if (WindowHandle != IntPtr.Zero)
+            {
+                // Add the ToolWindow flag so the overlay doesn't show up in the Windows task switcher(alt-tab)
+                int exStyle = PInvoke.GetWindowLong((global::Windows.Win32.Foundation.HWND)WindowHandle, global::Windows.Win32.UI.WindowsAndMessaging.WINDOW_LONG_PTR_INDEX.GWL_EXSTYLE);
+                exStyle = 0x00000080;
+                PInvoke.SetWindowLong((global::Windows.Win32.Foundation.HWND)WindowHandle, global::Windows.Win32.UI.WindowsAndMessaging.WINDOW_LONG_PTR_INDEX.GWL_EXSTYLE, unchecked(exStyle));
+            }
         }
         private void ThumbnailWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
         {
