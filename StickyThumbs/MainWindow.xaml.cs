@@ -16,7 +16,7 @@ namespace StickyThumbs
     {
         ObservableCollection<Theme> Themes = new ObservableCollection<Theme>(ThemeManager.Current.Themes.Where(x => x.Name.Contains("Dark")));
         ObservableCollection<UserControls.ProcessControl> ProcessControlCollection = new();
-        Dictionary<string, Windows.ThumbnailWindow> ThumbnailDictionary = new();
+        Dictionary<int, Windows.ThumbnailWindow> ThumbnailDictionary = new();
 
         public MainWindow()
         {
@@ -132,23 +132,25 @@ namespace StickyThumbs
             var selectedProcess = ProcessDataGrid.SelectedItem as UserControls.ProcessControl;
             if (selectedProcess is not null)
             {
-                if (ThumbnailDictionary.ContainsKey(selectedProcess.Process.ProcessName))
+                if (ThumbnailDictionary.ContainsKey(selectedProcess.Process.Id))
                     return;
 
                 try
                 {
+                    // TODO: Use GUID to support multiple windows of the same process
                     Windows.ThumbnailWindow thumbnailWindow = new Windows.ThumbnailWindow(selectedProcess.Process);
                     var appTheme = ThemeManager.Current.DetectTheme(this)?.Name ?? "Dark.Blue";
                     ThemeManager.Current.ChangeTheme(thumbnailWindow, appTheme);
                     thumbnailWindow.Closing += ThumbnailWindow_Closing;
-                    ThumbnailDictionary.Add(selectedProcess.Process.ProcessName, thumbnailWindow);
+                    ThumbnailDictionary.Add(selectedProcess.Process.Id, thumbnailWindow);
                     thumbnailWindow.Show();
                     selectedProcess.Process.EnableRaisingEvents = true;
                     selectedProcess.Process.Exited += Process_Exited;
                 }
                 catch
                 {
-                    // TODO: Error/Warning message, likely System.ComponentModel.Win32Exception
+                    // TODO: Some processes don't let you set EnableRaisingEvents
+                    // a better solution may be to use a Timer to check if a process is still active every second or so
                 }
             }
         }
@@ -190,7 +192,7 @@ namespace StickyThumbs
         private void Process_Exited(object? sender, EventArgs e)
         {
             // TODO: Needs some more testing, probably use Try/Catch
-            foreach (KeyValuePair<string, Windows.ThumbnailWindow> keyValue in ThumbnailDictionary)
+            foreach (KeyValuePair<int, Windows.ThumbnailWindow> keyValue in ThumbnailDictionary)
             {
                 if (keyValue.Value.MonitoredProcess == ((Process)sender))
                 {
@@ -201,7 +203,11 @@ namespace StickyThumbs
         }
         private void ThumbnailWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
         {
-            ThumbnailDictionary.Remove(((Windows.ThumbnailWindow)sender).MonitoredProcess.ProcessName);
+            Windows.ThumbnailWindow? thumbnail = (Windows.ThumbnailWindow?)sender;
+            if (thumbnail is null)
+                return;
+
+            ThumbnailDictionary.Remove(thumbnail.MonitoredProcess.Id);
         }
         #endregion
 
